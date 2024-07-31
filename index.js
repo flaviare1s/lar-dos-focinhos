@@ -14,10 +14,30 @@ app.use(express.json());
 
 // CRUD:
 // CREATE (POST):
-
+app.get("/clientes", async (req, res) => {
+    const listaClientes = await Cliente.findAll();
+    res.json(listaClientes);
+  });
+  
 
 // READ (GET):
 
+//selecionando apenas 1 cliente
+
+
+//selecionando vários clientes
+app.get("/clientes/:id", async (req, res) => {
+    const cliente = await Cliente.findOne({
+      where: { id: req.params.id },
+      include: [Reserva],
+    });
+  
+    if (cliente) {
+      res.json(cliente);
+    } else {
+      res.status(404).json({ message: "Cliente não encontrado!" });
+    }
+  });
 
 // UPDATE (PUT):
 
