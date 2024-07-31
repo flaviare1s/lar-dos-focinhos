@@ -2,6 +2,7 @@ import { connection, authenticate} from "./config/database.js";
 import {Cliente} from "./models/cliente.js";
 import {Pet} from "./models/pet.js"
 import {Reserva} from "./models/reserva.js"
+import express from 'express'
 
 authenticate(connection).then(() => {
     connection.sync();
@@ -25,7 +26,7 @@ app.use(express.json());
 
 
 
-app.listen(3000, () => {
-    console.log('Servidor rodando em http://localhost:3000/')
+app.listen(3001, () => {
+    console.log('Servidor rodando em http://localhost:3001/')
   })
   
