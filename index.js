@@ -7,6 +7,10 @@ authenticate(connection).then(() => {
     connection.sync();
 });
 
+const app = express();
+
+app.use(express.json());
+
 // CRUD:
 // CREATE (POST):
 
