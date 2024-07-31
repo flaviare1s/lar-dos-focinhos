@@ -14,16 +14,16 @@ app.use(express.json());
 
 // CRUD:
 // CREATE (POST):
-app.get("/clientes", async (req, res) => {
-    const listaClientes = await Cliente.findAll();
-    res.json(listaClientes);
-  });
-  
 
 // READ (GET):
 
 //selecionando apenas 1 cliente
 
+app.get("/clientes", async (req, res) => {
+    const listaClientes = await Cliente.findAll();
+    res.json(listaClientes);
+  });
+  
 
 //selecionando vários clientes
 app.get("/clientes/:id", async (req, res) => {
