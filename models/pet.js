@@ -1,7 +1,7 @@
 import { connection } from "../config/database.js"
 import { DataTypes } from "sequelize"
 
-export const Cachorro = connection.define('cachorro', {
+export const Pet = connection.define('pet', {
   nome: {
     type: DataTypes.STRING(90),
     allowNull: false,
