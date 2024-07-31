@@ -14,7 +14,19 @@ app.use(express.json());
 
 // CRUD:
 // CREATE (POST):
+app.post("/clientes", async (req, res) => {
+    const { nome, email, telefone, pet, reserva } = req.body;
 
+    try {
+        await Cliente.create(
+            { nome, email, telefone, reserva },
+            { include: [Reserva] }
+        )
+        res.json({ message: "Cliente cadastrado com sucesso!" })
+    } catch(err) {
+        res.status(500).json({ message: "Um erro aconteceu: " + err })
+    }
+})
 
 // READ (GET):
 
