@@ -21,15 +21,12 @@ clientesRouter.post("/clientes", async (req, res) => {
 })
 
 // READ (GET):
-
 //selecionando apenas 1 cliente
-
 clientesRouter.get("/clientes", async (req, res) => {
     const listaClientes = await Cliente.findAll();
     res.json(listaClientes);
   });
   
-
 //selecionando vários clientes
 clientesRouter.get("/clientes/:id", async (req, res) => {
     const cliente = await Cliente.findOne({
@@ -43,3 +40,23 @@ clientesRouter.get("/clientes/:id", async (req, res) => {
       res.status(404).json({ message: "Cliente não encontrado!" });
     }
   });
+
+
+  // UPDATE (PUT):
+  clientesRouter.put("/clientes/:id", async (req, res) => {
+    const idCliente = req.params.id;
+    const { nome, email, telefone, pet, reserva } = req.body;
+
+    try {
+      const cliente = await Cliente.findByPk(idCliente);
+      if (cliente) {
+        await Reserva.update(reserva, { where: { clienteId: idCliente } });
+        await cliente.update({ nome, email, telefone, pet });
+        res.json({ message: "Cliente atualizado com sucesso!" });
+      } else {
+        res.status(404).json({ message: "Cliente não encontrado!" });
+      }
+    } catch (err) {
+      res.status(500).json({ message: "Um erro aconteceu: " + err });
+    }
+  })
