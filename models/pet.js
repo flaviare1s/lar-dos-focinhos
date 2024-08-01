@@ -1,5 +1,6 @@
 import { connection } from "../config/database.js"
 import { DataTypes } from "sequelize"
+import { Reserva } from "./reserva.js"
 
 export const Pet = connection.define('pet', {
   nome: {
@@ -14,3 +15,6 @@ export const Pet = connection.define('pet', {
     type: DataTypes.DATEONLY,
   },
 })
+
+Pet.hasOne(Reserva, { onDelete: 'CASCADE' })
+Reserva.belongsTo(Pet)
