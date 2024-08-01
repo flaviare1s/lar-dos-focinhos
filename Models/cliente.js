@@ -20,7 +20,7 @@ export const Cliente = connection.define('cliente', {
   },
 })
 
-Cliente.hasOne(Pet, { onDelete: 'CASCADE'})
+Cliente.hasMany(Pet, { onDelete: 'CASCADE'})
 Pet.belongsTo(Cliente) 
 
 
