@@ -1,8 +1,8 @@
 import { connection, authenticate} from "./config/database.js";
-import {Cliente} from "./models/cliente.js";
-import {Pet} from "./models/pet.js"
-import {Reserva} from "./models/reserva.js"
-import express from 'express'
+import express from 'express';
+import { clientesRouter } from "./routers/clientes.js";
+//import { petsRouter } from "./routes/pets.js";
+
 
 authenticate(connection).then(() => {
     connection.sync();
@@ -12,50 +12,9 @@ const app = express();
 
 app.use(express.json());
 
-// CRUD:
-// CREATE (POST):
-app.post("/clientes", async (req, res) => {
-    const { nome, email, telefone, pet, reserva } = req.body;
-
-    try {
-        await Cliente.create(
-            { nome, email, telefone, reserva },
-            { include: [Reserva] }
-        )
-        res.json({ message: "Cliente cadastrado com sucesso!" })
-    } catch(err) {
-        res.status(500).json({ message: "Um erro aconteceu: " + err })
-    }
-})
-
-// READ (GET):
-
-//selecionando apenas 1 cliente
-
-app.get("/clientes", async (req, res) => {
-    const listaClientes = await Cliente.findAll();
-    res.json(listaClientes);
-  });
-  
-
-//selecionando vários clientes
-app.get("/clientes/:id", async (req, res) => {
-    const cliente = await Cliente.findOne({
-      where: { id: req.params.id },
-      include: [Reserva],
-    });
-  
-    if (cliente) {
-      res.json(cliente);
-    } else {
-      res.status(404).json({ message: "Cliente não encontrado!" });
-    }
-  });
-
-// UPDATE (PUT):
-
-
-// DELETE (DELETE):
+//Rotas 
+app.use(clientesRouter);
+//app.use(petsRouter);
 
 
 
