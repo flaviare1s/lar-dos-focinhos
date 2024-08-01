@@ -48,13 +48,12 @@ clientesRouter.get("/clientes/:id", async (req, res) => {
   // UPDATE (PUT):
   clientesRouter.put("/clientes/:id", async (req, res) => {
     const idCliente = req.params.id;
-    const { nome, email, telefone, pet, reserva } = req.body;
+    const { nome, email, telefone } = req.body;
 
     try {
       const cliente = await Cliente.findByPk(idCliente);
       if (cliente) {
-        await Reserva.update(reserva, { where: { clienteId: idCliente } });
-        await cliente.update({ nome, email, telefone, pet });
+        await cliente.update({ nome, email, telefone });
         res.json({ message: "Cliente atualizado com sucesso!" });
       } else {
         res.status(404).json({ message: "Cliente não encontrado!" });
@@ -62,9 +61,7 @@ clientesRouter.get("/clientes/:id", async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: "Um erro aconteceu: " + err });
     }
-  })
-
-
+  });
 
   //DELETE
   clientesRouter.delete("/clientes/:id", async (req, res) => {
