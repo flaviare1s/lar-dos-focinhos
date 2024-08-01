@@ -21,13 +21,16 @@ clientesRouter.post("/clientes", async (req, res) => {
 })
 
 // READ (GET):
-//selecionando apenas 1 cliente
+
+// 1. selecionando apenas 1 cliente
+
 clientesRouter.get("/clientes", async (req, res) => {
     const listaClientes = await Cliente.findAll();
     res.json(listaClientes);
   });
   
-//selecionando vários clientes
+
+//2. selecionando vários clientes
 clientesRouter.get("/clientes/:id", async (req, res) => {
     const cliente = await Cliente.findOne({
       where: { id: req.params.id },
@@ -60,3 +63,24 @@ clientesRouter.get("/clientes/:id", async (req, res) => {
       res.status(500).json({ message: "Um erro aconteceu: " + err });
     }
   })
+
+
+
+  //DELETE
+  clientesRouter.delete("/clientes/:id", async (req, res) => {
+    const idCliente = req.params.id;
+  
+    try {
+      const cliente = await Cliente.findOne({ where: { id: idCliente } });
+  
+      if (cliente) {
+        await cliente.destroy();
+        res.json({ message: "Cliente removido com sucesso." });
+      } else {
+        res.status(404).json({ message: "Cliente não encontrado." });
+      }
+    } catch (err) {
+      res.status(500).json({ message: "Um erro ocorreu ao excluir cliente" });
+    }
+  });
+  
