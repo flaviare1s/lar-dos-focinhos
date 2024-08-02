@@ -47,7 +47,7 @@ Rodrigo Feijó
 
 - **POST /pets**
   - Cria um novo pet.
-  - Request body: `{ "nome": "Nome do Pet", "raça": "Raça", "dataNasc": "YYYY-MM-DD", "clienteId": 1 }`
+  - Request body: `{ "nome": "Nome do Pet", "raca": "Raça", "dataNasc": "YYYY-MM-DD", "clienteId": 1 }`
 
 - **GET /pets**
   - Retorna todos os pets.
@@ -57,7 +57,7 @@ Rodrigo Feijó
 
 - **PUT /pets/:id**
   - Atualiza um pet pelo ID.
-  - Request body: `{ "nome": "Nome Atualizado", "raça": "Raça Atualizada", "dataNasc": "YYYY-MM-DD", "clienteId": 1 }`
+  - Request body: `{ "nome": "Nome Atualizado", "raca": "Raça Atualizada", "dataNasc": "YYYY-MM-DD", "clienteId": 1 }`
 
 - **DELETE /pets/:id**
   - Deleta um pet pelo ID.
