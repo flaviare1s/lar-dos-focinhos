@@ -7,7 +7,7 @@ export const Pet = connection.define('pet', {
     type: DataTypes.STRING(90),
     allowNull: false,
   },
-  raça: {
+  raca: {
     type: DataTypes.STRING(100),
     allowNull: false,
   },
