@@ -5,8 +5,8 @@
 Este projeto foi criado como uma atividade avaliativa, realizada em equipe, no bootcamp de React e Node da SoulCode Academy. O backend foi desenvolvido em ExpressJS para a realização de operações CRUD. O sistema possui três tabelas, criadas utilizando Sequelize, e relacionamentos entre elas, fornecendo endpoints para gerenciamento completo dos dados.
 
 ## Membros da equipe:
-Flávia Reis
-Ingrid Munhoz
+- Flávia Reis
+- Ingrid Munhoz
 
 ## Funcionalidades
 
