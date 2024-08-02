@@ -7,7 +7,6 @@ Este projeto foi criado como uma atividade avaliativa, realizada em equipe, no b
 ## Membros da equipe:
 Flávia Reis
 Ingrid Munhoz
-Rodrigo Feijó
 
 ## Funcionalidades
 
