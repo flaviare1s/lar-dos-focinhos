@@ -6,14 +6,16 @@ import { petsRouter } from "./routers/pet.js";
 import cors from "cors";
 
 
-// chamada do CORS
-app.use(cors({origin:"http//:localhost:5173"}))
 
 authenticate(connection).then(() => {
     connection.sync();
 });
 
 const app = express();
+
+// chamada do CORS
+app.use(cors({origin:"http://localhost:5173"}))
+
 
 app.use(express.json());
 
