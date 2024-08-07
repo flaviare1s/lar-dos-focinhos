@@ -2,7 +2,7 @@ import { connection, authenticate} from "./config/database.js";
 import express from 'express';
 import { clientesRouter } from "./routers/clientes.js";
 import { reservasRouter } from "./routers/reservas.js";
-import { petsRouter } from "./routers/pet.js";
+import { petsRouter } from "./routers/pets.js";
 import cors from "cors";
 
 

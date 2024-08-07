@@ -26,7 +26,12 @@ reservasRouter.post("/reservas", async (req, res) => {
 
 //READ (GET):
 reservasRouter.get("/reservas", async (req, res) => {
-  const listaReservas = await Reserva.findAll();
+  const listaReservas = await Reserva.findAll({
+    include: [
+      {model: Cliente, attributes: ["nome", "telefone"]},
+      {model: Pet, attributes: ["nome"]}
+    ],
+  });
   res.json(listaReservas);
 })
 
