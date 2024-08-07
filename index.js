@@ -3,6 +3,11 @@ import express from 'express';
 import { clientesRouter } from "./routers/clientes.js";
 import { reservasRouter } from "./routers/reservas.js";
 import { petsRouter } from "./routers/pet.js";
+import cors from "cors";
+
+
+// chamada do CORS
+app.use(cors({origin:"http//:localhost:5173"}))
 
 authenticate(connection).then(() => {
     connection.sync();
