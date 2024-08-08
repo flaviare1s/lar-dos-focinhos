@@ -1,5 +1,5 @@
 import { connection } from "../config/database.js";
-import { DataTypes } from "sequelize";
+import { DataTypes, ENUM } from "sequelize";
 
 export const Reserva = connection.define('reserva', {
     dataInicio: {
@@ -15,7 +15,7 @@ export const Reserva = connection.define('reserva', {
         allowNull: false,
     },
     tipoAcomodacao: {
-        type: DataTypes.STRING(100),
+        type: ENUM("deluxe", "standard"),
         allowNull: false,
     },
 });
