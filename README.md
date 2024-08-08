@@ -42,6 +42,9 @@ Este projeto foi criado como uma atividade avaliativa, realizada em equipe, no b
 - **DELETE /clientes/:id**
   - Deleta um cliente pelo ID.
 
+- **GET /clientes/:id/reservas**
+  - Retorna as reservas de um cliente específico
+
 ### Pets
 
 - **POST /pets**
