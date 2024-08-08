@@ -1,5 +1,6 @@
 import {Cliente} from "../models/cliente.js";
 import {Reserva} from "../models/reserva.js";
+import { Pet } from "../models/pet.js";
 import {Router} from "express";
 
 export const clientesRouter = Router();
@@ -81,3 +82,15 @@ clientesRouter.get("/clientes/:id", async (req, res) => {
     }
   });
   
+
+  // LISTAR RESERVAS POR CLIENTE:
+  clientesRouter.get("/clientes/:id/reservas", async (req, res) => {
+    const listaReservas = await Reserva.findAll({
+      where: { clienteId: req.params.id },
+      include: [ 
+        { model: Cliente, attributes: ['id', ['nome', 'nomeCliente']]},
+        { model: Pet, attributes: ['id', ['nome', 'nomePet']]}
+    ]});
+    
+    res.json(listaReservas);
+  })
